@@ -1,0 +1,29 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
+use Modernben\LaravelLiveDatatables\Models\BaseDatatable;
+use Modernben\LaravelLiveDatatables\Traits\Searchable;
+
+class DummyClass extends BaseDatatable
+{
+    use Searchable;
+
+    protected $table = 'datatable_{{ snake_class }}';
+
+    protected $searchFields = [];
+
+    /**
+     * List of the fields to export
+     *
+     * @return array
+     */
+    public function export()
+    {
+        return [
+            'id' => $this->id,
+        ];
+    }
+}

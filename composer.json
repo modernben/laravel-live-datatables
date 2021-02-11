@@ -1,39 +1,41 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "modernben/laravel-live-datatables",
+    "description": "Datatables powered by Livewire and DB Views",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "modernben",
+        "laravel-live-datatables"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/modernben/laravel-live-datatables",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Ben Miller",
+            "email": "ben@modernmcguire.com",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^7.4|^8.0",
+        "illuminate/contracts": "^7.0|^8.0",
+        "livewire/livewire": "^2.3",
         "spatie/laravel-package-tools": "^1.1",
-        "illuminate/contracts": "^8.0"
+        "spatie/simple-excel": "^1.13"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0",
+        "orchestra/testbench": "^5.0|^6.0",
         "phpunit/phpunit": "^9.3",
         "spatie/laravel-ray": "^1.9",
         "vimeo/psalm": "^4.4"
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src",
-            "Spatie\\Skeleton\\Database\\Factories\\": "database/factories"
+            "Modernben\\LaravelLiveDatatables\\": "src",
+            "Modernben\\LaravelLiveDatatables\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "Modernben\\LaravelLiveDatatables\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -47,10 +49,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "Modernben\\LaravelLiveDatatables\\LaravelLiveDatatablesServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "LaravelLiveDatatables": "Modernben\\LaravelLiveDatatables\\LaravelLiveDatatablesFacade"
             }
         }
     },

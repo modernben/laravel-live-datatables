@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Modernben\LaravelLiveDatatables\Tests;
 
 class ExampleTest extends TestCase
 {

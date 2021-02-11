@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Livewire;
+
+use App\Http\Livewire\Datatble\{{ class }};
+use Modernben\LaravelLiveDatatables\Models\ViewDatatable;
+
+class {{ class }}Datatable extends ViewDatatable
+{
+    public $sortField = '-created_at';
+
+    public function baseQuery()
+    {
+        return {{ class }}::query()
+            ->filter($this->filters)
+            ->search($this->search)
+            ->order($this->sortField);
+    }
+
+    public function export($type)
+    {
+        return $this->baseQuery()->export('filename', $type);
+    }
+
+    public function render()
+    {
+        return view('livewire.{{ filename }}', [
+            'rows' => $this->baseQuery()->paginate($this->perPage)
+        ]);
+    }
+}
+

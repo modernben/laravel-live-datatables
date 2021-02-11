@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col settings-container pb-0 d-flex align-items-center filter-bar" wire:ignore>
+        <div class="mr-auto">
+            <h1 class="mb-0">Page title</h1>
+        </div>
+        <div class="mr-2">
+            <select class="dd-multiselect live-update-class" multiple data-actions-box="true" wire:model="filters.field" id="filter-field" data-style="btn-sm btn-no-outline-primary" title="Filter" multiple data-actions-box="true">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <div class="justify-content-end">
+            <button id="export" type="button" class="btn btn-no-outline-primary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-download"></i>Export</button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sales-opportunities-export">
+                <a class="dropdown-item" wire:click="export('csv')" href="#">CSV</a>
+                <a class="dropdown-item" wire:click="export('xls')" href="#">XLS/XLSX</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-12 settings-container">
+        <div class="dataTables_wrapper">
+
+            @include('livewire.includes._datatables-header', ['placeholder' => 'Search...'])
+
+            <div class="row">
+                <div class="col dataTables_wrapper table-responsive">
+                    <table id="dt-account-onboarding" class="row-border nowrap dataTable border shadow-sm mb-3 dt-onboarding" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>A</th>
+                                <th>B</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($rows as $row)
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            @include('livewire.includes._datatables-footer', ['model' => $rows])
+        </div>
+    </div>
+
+    @push('scripts')
+    <script>
+        $('body').tooltip({
+            selector: '[data-toggle="tooltip"]'
+        });
+        $(function () {
+            $('select.dd-multiselect').selectpicker({
+                dropdownAlignRight: true,
+                deselectAllText: 'None',
+                selectAllText: 'All',
+                dropdownAlignRight: true,
+                selectedTextFormat: 'static',
+            });
+        });
+    </script>
+    @endpush
+</div>

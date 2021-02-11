@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Migrations\Migration;
+
+class Create{{ class }}View extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        DB::statement("CREATE VIEW {{ table }} AS (
+            SELECT * FROM users
+        );
+        ");
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        DB::statement('DROP VIEW {{ table }};');
+    }
+}
