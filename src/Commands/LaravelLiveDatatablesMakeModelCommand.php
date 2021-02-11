@@ -2,10 +2,9 @@
 
 namespace Modernben\LaravelLiveDatatables\Commands;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\Command;
-use Illuminate\Filesystem\Filesystem;
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
 class LaravelLiveDatatablesMakeModelCommand extends GeneratorCommand

@@ -2,8 +2,8 @@
 
 namespace Modernben\LaravelLiveDatatables\Models;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Spatie\SimpleExcel\SimpleExcelWriter;
 
 class BaseDatatable extends Model
@@ -41,7 +41,7 @@ class BaseDatatable extends Model
 
     public function scopeExport($query, $filename = null, $type = 'csv')
     {
-        if ( $filename == null ) {
+        if ($filename == null) {
             $filename = $this->getTable();
         }
 
@@ -51,7 +51,7 @@ class BaseDatatable extends Model
 
         $temp_file = Str::uuid() . '.' . $type;
         $writer = SimpleExcelWriter::create($temp_file, $type);
-        $query->chunk(250, function($rows) use ($writer){
+        $query->chunk(250, function ($rows) use ($writer) {
             foreach ($rows as $row) {
                 $writer->addRow($row->export());
             }
