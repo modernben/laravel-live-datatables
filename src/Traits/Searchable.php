@@ -23,7 +23,8 @@ trait Searchable
     {
         if (empty($search)) {
             // short circuit the query if the term is blank
-            return $query->where(DB::raw('0 = 1'));
+            // return $query->where(DB::raw('0 = 1'));
+            return $query;
         }
 
         // SANITIZE USER INPUT!

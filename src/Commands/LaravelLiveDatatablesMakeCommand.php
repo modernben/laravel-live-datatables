@@ -64,7 +64,9 @@ class LaravelLiveDatatablesMakeCommand extends Command
         $file = '_create_' . $view . '_view.php';
         $filename = date('Y_m_d_His') . '_create_' . $view . '_view.php';
 
-        $this->ensureMigrationDoesntAlreadyExist($file);
+        if (!$this->option('force')) {
+            $this->ensureMigrationDoesntAlreadyExist($file);
+        }
 
         $stub = __DIR__ . '/stubs/migration.stub';
         $stub = $this->files->get($stub);
@@ -88,7 +90,7 @@ class LaravelLiveDatatablesMakeCommand extends Command
 
         $stub = str_replace(
             ['DummyClass', '{{ class }}', '{{class}}'],
-            $studly . 'Datatable', $stub
+            $studly, $stub
         );
 
         $stub = str_replace(
@@ -96,7 +98,7 @@ class LaravelLiveDatatablesMakeCommand extends Command
             Str::kebab($name) . '-datatable', $stub
         );
 
-        $this->files->put(app_path('Http/Livewire/' . $studly . '.php'), $stub);
+        $this->files->put(app_path('Http/Livewire/' . $studly . 'Datatable.php'), $stub);
 
         $this->info('Livewire Component created. ' . app_path('Http/Livewire/' . $studly . '.php'));
 

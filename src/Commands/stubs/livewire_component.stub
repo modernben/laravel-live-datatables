@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire\Datatble\{{ class }};
+use App\Http\Livewire\Datatable\{{ class }};
 use Modernben\LaravelLiveDatatables\Models\ViewDatatable;
 
 class {{ class }}Datatable extends ViewDatatable
