@@ -3,8 +3,8 @@
 namespace Modernben\LaravelLiveDatatables\Traits;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 trait Searchable
 {
@@ -31,7 +31,7 @@ trait Searchable
         // $search_terms = explode(' ', $search);
         $search_terms = Arr::wrap($search);
 
-        foreach($search_terms as $index => $search) {
+        foreach ($search_terms as $index => $search) {
             $search_terms[$index] = '%'.trim(htmlentities($search, ENT_QUOTES, 'UTF-8', false)).'%';
         }
 
@@ -44,7 +44,7 @@ trait Searchable
         }
 
         $query->where(function ($query) use ($search_terms, $searchFields) {
-            foreach($search_terms as $search) {
+            foreach ($search_terms as $search) {
                 foreach ($searchFields as $field) {
 
                     // setup relationship searching
@@ -55,7 +55,7 @@ trait Searchable
                         if (method_exists($this, $relationship_name)) {
                             $updated_search = $search;
                             if ($relationship_name == 'phoneNumbers') {
-                                if ( Str::contains($search, '@') ) {
+                                if (Str::contains($search, '@')) {
                                     continue;
                                 }
 
@@ -69,11 +69,11 @@ trait Searchable
                                 $query->where($field, 'LIKE', $updated_search);
                             });
                         }
-                    } else if ( in_array($field, ["users.name", "module_crm_contacts.name", "module_leads.name"]) ) {
+                    } elseif (in_array($field, ["users.name", "module_crm_contacts.name", "module_leads.name"])) {
                         // search first_name + last_name at once
                         $table = explode('.', $field)[0];
                         $query->orWhereRaw("CONCAT({$table}.first_name, ' ', {$table}.last_name) LIKE ?", $search);
-                    }else {
+                    } else {
                         $query->orWhere($field, 'LIKE', $search);
                     }
                 }

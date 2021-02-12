@@ -2,11 +2,10 @@
 
 namespace Modernben\LaravelLiveDatatables\Commands;
 
-use Illuminate\Support\Str;
-use InvalidArgumentException;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
+use InvalidArgumentException;
 
 class LaravelLiveDatatablesMakeCommand extends Command
 {
@@ -95,7 +94,8 @@ class LaravelLiveDatatablesMakeCommand extends Command
 
         $stub = str_replace(
             ['{{ filename }}'],
-            Str::kebab($name) . '-datatable', $stub
+            Str::kebab($name) . '-datatable',
+            $stub
         );
 
         $this->files->put(app_path('Http/Livewire/' . $studly . 'Datatable.php'), $stub);
@@ -111,7 +111,6 @@ class LaravelLiveDatatablesMakeCommand extends Command
         $this->info('Livewire View created. ' . resource_path('views/livewire/' . Str::kebab($name) . '-datatable.blade.php'));
     }
 
-
     /**
      * Populate the place-holders in the migration stub.
      *
@@ -124,7 +123,8 @@ class LaravelLiveDatatablesMakeCommand extends Command
     {
         $stub = str_replace(
             ['DummyClass', '{{ class }}', '{{class}}'],
-            Str::studly($name), $stub
+            Str::studly($name),
+            $stub
         );
 
         // Here we will replace the table place-holders with the table specified by
@@ -133,7 +133,8 @@ class LaravelLiveDatatablesMakeCommand extends Command
         if (! is_null($table)) {
             $stub = str_replace(
                 ['DummyTable', '{{ table }}', '{{table}}'],
-                $table, $stub
+                $table,
+                $stub
             );
         }
 
@@ -182,15 +183,14 @@ class LaravelLiveDatatablesMakeCommand extends Command
         }
     }
 
-     /**
-     * Get the class name of a migration name.
-     *
-     * @param  string  $name
-     * @return string
-     */
+    /**
+    * Get the class name of a migration name.
+    *
+    * @param  string  $name
+    * @return string
+    */
     protected function getClassName($name)
     {
         return Str::studly($name);
     }
-
 }

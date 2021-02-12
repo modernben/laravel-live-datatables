@@ -2,10 +2,10 @@
 
 namespace Modernben\LaravelLiveDatatables;
 
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Modernben\LaravelLiveDatatables\Commands\LaravelLiveDatatablesMakeCommand;
 use Modernben\LaravelLiveDatatables\Commands\LaravelLiveDatatablesMakeModelCommand;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelLiveDatatablesServiceProvider extends PackageServiceProvider
 {

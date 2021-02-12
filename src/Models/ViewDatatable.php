@@ -2,8 +2,8 @@
 
 namespace Modernben\LaravelLiveDatatables\Models;
 
-use Livewire\Component;
 use Illuminate\Support\Str;
+use Livewire\Component;
 use Livewire\WithPagination;
 
 abstract class ViewDatatable extends Component
@@ -69,7 +69,7 @@ abstract class ViewDatatable extends Component
     public function sortBy($field)
     {
         if ($this->sortField === $field) {
-            if(Str::startsWith($this->sortField, '-')) {
+            if (Str::startsWith($this->sortField, '-')) {
                 $this->sortField = ltrim($this->sortField, '-');
             } else {
                 $this->sortField = '-' . $this->sortField;

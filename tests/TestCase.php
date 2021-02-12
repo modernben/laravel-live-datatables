@@ -3,8 +3,8 @@
 namespace Modernben\LaravelLiveDatatables\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Modernben\LaravelLiveDatatables\LaravelLiveDatatablesServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
