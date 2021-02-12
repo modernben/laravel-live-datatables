@@ -63,7 +63,7 @@ class LaravelLiveDatatablesMakeCommand extends Command
         $file = '_create_' . $view . '_view.php';
         $filename = date('Y_m_d_His') . '_create_' . $view . '_view.php';
 
-        if (!$this->option('force')) {
+        if (! $this->option('force')) {
             $this->ensureMigrationDoesntAlreadyExist($file);
         }
 
@@ -89,7 +89,8 @@ class LaravelLiveDatatablesMakeCommand extends Command
 
         $stub = str_replace(
             ['DummyClass', '{{ class }}', '{{class}}'],
-            $studly, $stub
+            $studly,
+            $stub
         );
 
         $stub = str_replace(
