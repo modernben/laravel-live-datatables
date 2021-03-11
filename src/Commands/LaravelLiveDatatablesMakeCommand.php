@@ -75,7 +75,7 @@ class LaravelLiveDatatablesMakeCommand extends Command
             $this->populateStub($class, $stub, $view)
         );
 
-        $this->info('Migration created. ' . $filename);
+        $this->info('Migration created. ' . str_replace(base_path() . '/', '', $filename));
     }
 
     public function createLivewireComponent()
@@ -101,7 +101,7 @@ class LaravelLiveDatatablesMakeCommand extends Command
 
         $this->files->put(app_path('Http/Livewire/' . $studly . 'Datatable.php'), $stub);
 
-        $this->info('Livewire Component created. ' . app_path('Http/Livewire/' . $studly . '.php'));
+        $this->info('Livewire Component created. ' . str_replace(base_path() . '/', '', app_path('Http/Livewire/' . $studly . '.php')));
 
 
         $stub = __DIR__ . '/stubs/livewire_view.stub';
@@ -109,7 +109,7 @@ class LaravelLiveDatatablesMakeCommand extends Command
 
         $this->files->put(resource_path('views/livewire/' . Str::kebab($name) . '-datatable.blade.php'), $stub);
 
-        $this->info('Livewire View created. ' . resource_path('views/livewire/' . Str::kebab($name) . '-datatable.blade.php'));
+        $this->info('Livewire View created. ' . str_replace(base_path() . '/', '', resource_path('views/livewire/' . Str::kebab($name) . '-datatable.blade.php')));
     }
 
     /**
