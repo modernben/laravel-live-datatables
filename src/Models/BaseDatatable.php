@@ -15,7 +15,7 @@ class BaseDatatable extends Model
         }
 
         foreach ($filters as $filter => $values) {
-            if ($values == []) {
+            if ($values == [] || ! is_array($values)) {
                 continue;
             }
 
