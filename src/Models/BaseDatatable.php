@@ -8,7 +8,18 @@ use Spatie\SimpleExcel\SimpleExcelWriter;
 
 class BaseDatatable extends Model
 {
-    public function scopeFilter($query, $filters)
+
+    public function scopeFilterIn($query, $filters, $boolean = 'or')
+    {
+        return $this->filter($filters, $boolean);
+    }
+
+    public function scopeFilterNotIn($query, $filters, $boolean = 'or')
+    {
+        return $this->filter($filters, $boolean, true);
+    }
+
+    public function scopeFilter($query, $filters, $boolean = 'or', $not = false)
     {
         if (empty($filters)) {
             return $query;
@@ -19,8 +30,8 @@ class BaseDatatable extends Model
                 continue;
             }
 
-            $query->where(function ($sub_query) use ($filter, $values) {
-                $sub_query->orWhereIn($filter, $values);
+            $query->where(function ($sub_query) use ($filter, $values, $boolean, $not) {
+                $sub_query->whereIn($filter, $values, $boolean, $not);
             });
         }
 
